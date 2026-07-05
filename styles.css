@@ -1,0 +1,142 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --font-display: "Anton", "Bebas Neue", "Impact", sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.25rem;
+  /* Premium dark palette — volt accent */
+  --background: oklch(0.14 0.01 80);
+  --foreground: oklch(0.97 0.005 80);
+  --surface: oklch(0.18 0.012 80);
+  --surface-2: oklch(0.22 0.014 80);
+  --card: oklch(0.18 0.012 80);
+  --card-foreground: oklch(0.97 0.005 80);
+  --popover: oklch(0.18 0.012 80);
+  --popover-foreground: oklch(0.97 0.005 80);
+  --primary: oklch(0.92 0.22 124);
+  --primary-foreground: oklch(0.14 0.01 80);
+  --secondary: oklch(0.25 0.014 80);
+  --secondary-foreground: oklch(0.97 0.005 80);
+  --muted: oklch(0.22 0.012 80);
+  --muted-foreground: oklch(0.65 0.012 80);
+  --accent: oklch(0.92 0.22 124);
+  --accent-foreground: oklch(0.14 0.01 80);
+  --destructive: oklch(0.65 0.24 27);
+  --destructive-foreground: oklch(0.97 0.005 80);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.92 0.22 124);
+}
+
+.dark { color-scheme: dark; }
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body { background: var(--color-background); color: var(--color-foreground); }
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    line-height: 0.92;
+  }
+  ::selection { background: var(--color-primary); color: var(--color-primary-foreground); }
+}
+
+@utility container-wide {
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 1rem 1.75rem;
+  font-size: 0.875rem;
+  border: 1px solid var(--color-primary);
+  transition: all 200ms ease;
+  &:hover { filter: brightness(1.1); transform: translateY(-1px); }
+}
+
+@utility btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--color-foreground);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 1rem 1.75rem;
+  font-size: 0.875rem;
+  border: 1px solid var(--color-border);
+  transition: all 200ms ease;
+  &:hover { border-color: var(--color-primary); color: var(--color-primary); }
+}
+
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--color-primary);
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--color-primary);
+  }
+}
+
+@utility noise-bg {
+  background-image: radial-gradient(circle at 1px 1px, oklch(1 0 0 / 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
